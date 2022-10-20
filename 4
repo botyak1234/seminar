@@ -14,8 +14,8 @@ int main()
 	x2 = a / 10;
 	s = x1 + x2;
 	pr = x1 * x2;
-	ch = s;
-	while (ch <= pr)
+	ch = min(s, pr);
+	while (ch <= max(s, pr))
 	{
 		cout << ch << endl;
 		ch++;
