@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+using namespace std;
+
+
+
+int main()
+{
+	int a, b, c, d;
+	cin >> a >> b >> c;
+	d = b * b - 4 * a * c;
+	if (d >= 0)
+	{
+		cout << "Два корня";
+		cout << (- b + sqrt(d)) / 2.0 * a;
+		cout << (-b - sqrt(d)) / 2.0 * a;
+	}
+	if (d == 0)
+	{
+		cout << "Один корень";
+		cout << (-b / 2. * a);
+	}
+	if (d < 0) cout << "Нет корней";
+}
