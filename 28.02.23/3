@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+
+
+
+int fib(int min, int max)
+{
+	if (min == 0) return max;
+	return fib(max % min, min);
+}
+
+int main()
+{
+	int a, b, min, max;
+	cin >> a >> b;
+	if (a < b)
+	{
+		min = a; 
+		max = b;
+	}
+	else
+	{
+		max = a;
+		min = b;
+	}
+	cout << fib(min, max);
+}
