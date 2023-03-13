@@ -1,0 +1,71 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+void sortvib(int* a, int n )
+{
+	int temp;
+	int index;
+	int mn;
+	for (int i = 0; i < n - 1; i++)
+	{
+		index = i;
+		mn = a[i];
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[j] < mn)
+			{
+				mn = a[j];
+				index = j;
+			}
+		}
+		temp = a[i];
+		a[i] = a[index];
+		a[index] = temp;
+	}
+}
+
+
+void sortvib(int n, int *a)
+{
+	int temp;
+	int index;
+	int mx;
+	for (int i = 0; i < n - 1; i++)
+	{
+		index = i;
+		mx = a[i];
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[j] > mx)
+			{
+				mx = a[j];
+				index = j;
+			}
+		}
+		temp = a[i];
+		a[i] = a[index];
+		a[index] = temp;
+	}
+}
+
+
+
+int main()
+{
+	int n; cin >> n;
+	int* a = new int[n];
+	for (int i = 0; i < n; i++) cin >> a[i];
+	sortvib(a, n);
+	//sorrtvib(n, a);
+	for (int i = 0; i < n; i++) cout << a[i] << ' ';
+}
