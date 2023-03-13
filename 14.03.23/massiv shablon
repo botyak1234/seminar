@@ -32,4 +32,5 @@ int main()
 		cout << pointer[i] << ' ';
 	}
 	delete[]a;
+	delete[]pointer;
 }
