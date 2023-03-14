@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+void ris(int n, int i, int raz, int space)
+{
+	if (i > n + raz) return;
+	else
+	{
+		for (int j = 0; j < space; j++)
+		{
+			cout << ' ';
+		}
+		for (int j = 0; j < i; j++)
+		{
+			cout << '*';
+		}
+		cout << endl;
+		return ris(n, i + 2, raz + 1, space -1);
+	}
+}
+
+void der(int n, int chet, int space)
+{
+	if (chet > n) return;
+	else
+	{
+		ris(chet, 1, 1, chet + space);
+		return der(n, chet+1, space -1);
+	}
+}
+
+int main()
+{
+	der(10, 1, 10);
+}
