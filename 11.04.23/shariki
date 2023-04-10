@@ -1,0 +1,122 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BowlingBall {
+	int weight;
+	string color;
+public:
+	static int count;
+	BowlingBall() {
+		count++;
+	} // = default;
+
+	BowlingBall(int weight, string color) {
+		count++;
+		setParams(weight, color);
+	}
+
+	BowlingBall(const BowlingBall& other) {
+		setParams(other.weight, other.color);
+		count++;
+	}
+	bool setWeight(int weight) {
+		if (weight > 0) {
+			this->weight = weight;
+			return true;
+		}
+		return false;
+	}
+	bool setColor(string color) {
+		if (color != "") {
+			this->color = color;
+			return true;
+		}
+		return false;
+	}
+	void setParams(int weight, string color) {
+		setWeight(weight);
+		setColor(color);
+	}
+	void print() {
+		cout << weight << " (" << color << ")\n";
+	}
+
+	// ++b
+	BowlingBall& operator++() {
+		weight++;
+		return *this;
+	}
+	// b++
+	BowlingBall operator++(int) {
+		BowlingBall tmp(*this);
+		weight++;
+		return tmp;
+	}
+	friend bool operator <(const BowlingBall& a, const BowlingBall& b)
+	{
+		return a.weight < b.weight;
+	}
+	friend bool operator >(const BowlingBall& a, const BowlingBall& b)
+	{
+		return a.weight > b.weight;
+	}
+	friend bool operator ==(const BowlingBall& a, const BowlingBall& b)
+	{
+		return a.weight == b.weight;
+	}
+	friend bool operator !=(const BowlingBall& a, const BowlingBall& b)
+	{
+		return a.color == b.color;
+	}
+	static bool coloor(const BowlingBall& x, const BowlingBall& y)
+	{
+		return x.color < y.color;
+	}
+	static bool weeight(const BowlingBall& x, const BowlingBall& y)
+	{
+		return x.weight < y.weight;
+	}
+	static bool isGreater(const BowlingBall& x, const BowlingBall& y)
+	{
+		if (!(x == y)) return coloor(x, y);
+		else return weeight(x, y);
+	}
+};
+
+
+
+
+
+int BowlingBall::count = 0;
+
+int main()
+{
+	//BowlingBall b(5, "white");
+	//cout << BowlingBall::count << endl;
+	//b.print();
+	//b.setColor("purple");
+	//b.print();
+	//cout << BowlingBall::count << endl;
+	//BowlingBall b1 = b;  // b1(b)
+	//b1.print();
+	//cout << BowlingBall::count << endl;
+	//BowlingBall b2(3, "yellow");
+	//cout << BowlingBall::count << endl;
+	//b2 = b1;
+	//b2.print();
+	//cout << BowlingBall::count << endl;
+	//return 0;
+	int n;
+	BowlingBall* array = new BowlingBall[n];
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = n - 1; j > i; j--)
+		{
+			if (array[j] > array[j - 1] )
+			{
+				swap(array[j], array[j - 1]);
+			}
+	}
+}
