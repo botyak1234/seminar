@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+class List
+{
+	struct Item
+	{
+		T inf;
+		Item* next;
+		Item(T x, Item* ref = nullptr) : inf(x), next(ref) {}
+	} *first = nullptr, *last = nullptr;
+  public:
+  void clear() {
+        List* current = head;
+        while (current != nullptr) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+        head = nullptr;
+    }
+ //и другие методы
+};
