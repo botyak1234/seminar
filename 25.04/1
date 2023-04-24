@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+class List
+{
+	struct Item
+	{
+		T inf;
+		Item* next;
+		Item(T x, Item* ref = nullptr) : inf(x), next(ref) {}
+	} *first = nullptr, *last = nullptr;
+  public:
+  void clear() {
+        List* current = head;
+        while (current != nullptr) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+        head = nullptr;
+    }
+ void duplicateEven()
+	{
+		if (first == nullptr) return;
+		for (Item* t = first; t != nullptr; t = t->next)
+		{
+			if (t->inf % 2 == 0)
+			{
+				Item *newItem = new Item(t->inf, t->next);
+				t->next = newItem;
+				if (t == last) last = newItem;
+            			t = t->next;	
+			}
+		}
+	}
+};
