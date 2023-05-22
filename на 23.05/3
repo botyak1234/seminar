@@ -1,0 +1,110 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <stack>
+#include <list>
+#include <set>
+
+using namespace std;
+
+bool is_prime(int n) 
+{
+    if (n <= 1) 
+    {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(n); i++) 
+    {
+        if (n % i == 0) 
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() 
+{
+    //ручками вектор
+    vector<int> nums;
+    int n, num; cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> num;
+        nums.push_back(num);
+    }
+    int i = 0;
+    while (i < n) 
+    {
+        while (i < n && !is_prime(nums[i])) 
+        {
+            i++;
+        }
+        while (i < n && is_prime(nums[n])) 
+        {
+            n--;
+        }
+        if (i < n) 
+        {
+            swap(nums[i], nums[n]);
+            i++;
+            n--;
+        }
+    }
+    for (int numv : nums) 
+    {
+        cout << numv << " ";
+    }
+    cout << endl;
+ 
+
+    //алгоритм вектор
+    vector<int> nums2;
+    int n2, num2; cin >> n2;
+    for (int i = 0; i < n2; i++)
+    {
+        cin >> num2;
+        nums2.push_back(num2);
+    }
+    auto it = partition(nums2.begin(), nums2.end(), is_prime);
+    for (auto numv : nums) cout << numv << " ";
+    cout << endl;
+
+
+
+
+    //ручками список
+    list<int> numbersl = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    auto itl= numbersl.begin();
+    while (itl != numbersl.end())
+    {
+        if (is_prime(*it)) 
+        {
+            int prime = *it;
+            itl = numbersl.erase(itl);
+            numbersl.push_front(prime);
+        }
+        else 
+        {
+            it++;
+        }
+    }
+
+    for (int numl : numbersl) cout << numl << " ";
+    cout << endl;
+
+
+
+    //алгоритм
+    list <int> numbersl2{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    auto it2 = partition(numbersl2.begin(), numbersl2.end(), is_prime);
+    for (auto numl2 : numbersl2) cout << numl2 << " ";
+    cout << endl;
+}
